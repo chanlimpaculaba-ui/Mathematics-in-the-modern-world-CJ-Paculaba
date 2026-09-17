@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MathBloom — Pink Mathematics</title>
+<style>
+:root{
+  --pink:#e83f91; --hot:#ff5aa8; --light:#fff4fa; --pale:#ffe4f1;
+  --ink:#5b2450; --muted:#8a557d; --white:#fff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;color:var(--ink);background:#fffafd;line-height:1.6}
+a{text-decoration:none;color:inherit}
+nav{position:sticky;top:0;z-index:10;background:rgba(255,250,253,.92);backdrop-filter:blur(14px);border-bottom:1px solid #f7c8df}
+.nav-inner{max-width:1120px;margin:auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{font-size:25px;font-weight:900;color:var(--pink);display:flex;align-items:center;gap:8px}
+.logo span{font-size:28px}
+.links{display:flex;gap:24px;font-size:14px;color:#7a416c}
+.links a:hover{color:var(--pink)}
+.btn{display:inline-block;background:linear-gradient(135deg,var(--hot),var(--pink));color:white;padding:11px 19px;border-radius:999px;font-weight:800;box-shadow:0 8px 20px #e83f9133}
+.hero{background:radial-gradient(circle at 85% 20%,#ffd2e8,transparent 32%),linear-gradient(135deg,#fff1f8,#ffe1ef);overflow:hidden}
+.hero-inner{max-width:1120px;margin:auto;min-height:520px;padding:72px 22px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:35px}
+.badge{display:inline-block;background:#fff;border:1px solid #f4bdd8;color:var(--pink);border-radius:999px;padding:7px 13px;font-size:12px;font-weight:800;margin-bottom:18px}
+h1{font-size:clamp(42px,6vw,72px);line-height:1.02;letter-spacing:-3px;color:#b92b78;margin-bottom:20px}
+.hero p{font-size:18px;max-width:610px;color:#7d426f;margin-bottom:28px}
+.hero-art{position:relative;height:340px}
+.math-cloud{position:absolute;inset:25px 10px;background:#ffffff99;border:1px solid #f8bdd9;border-radius:50px;box-shadow:0 25px 60px #ca458b1a;display:flex;align-items:center;justify-content:center}
+.symbols{font-size:40px;font-weight:800;color:#db3d8d;line-height:1.8;letter-spacing:15px;text-align:center;transform:rotate(-4deg)}
+.heart{position:absolute;color:#f04c9b;font-size:38px}.h1{top:5px;right:20px}.h2{bottom:5px;left:15px}
+.section{max-width:1120px;margin:auto;padding:70px 22px}
+.section-title{text-align:center;margin-bottom:38px}
+.kicker{color:var(--pink);font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:2px}
+h2{font-size:38px;line-height:1.1;color:#8f2867;margin-top:6px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:white;border:1px solid #f5cce0;border-radius:22px;padding:25px;box-shadow:0 12px 30px #b82f7710}
+.card:hover{transform:translateY(-3px);transition:.2s;box-shadow:0 18px 35px #b82f7720}
+.card h3{font-size:19px;color:#c52f80;margin-bottom:12px}
+.card h3::before{content:"♥";font-size:13px;margin-right:9px}
+.card p{font-size:14px;color:var(--muted);margin-bottom:15px}
+.mathbox{background:var(--light);border:1px solid #f8d2e5;border-radius:15px;padding:16px;color:#a5266d;font-family:Georgia,serif}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:#ffc8e1;color:#a51f68;text-align:left}
+th,td{padding:8px;border-bottom:1px solid #f4d5e4}
+code{background:#fff0f7;padding:2px 5px;border-radius:5px;color:#b12570}
+.types{display:grid;gap:9px}.type{display:flex;gap:10px;align-items:flex-start}.num{min-width:25px;height:25px;border-radius:50%;background:#f4519d;color:#fff;text-align:center;font-weight:800;font-size:13px;line-height:25px}.type b{color:#ad286f}
+.venn{height:180px;border:1px solid #f1bfd8;border-radius:14px;position:relative;background:#fff7fb;margin:10px 0 14px;overflow:hidden}
+.circle{position:absolute;width:115px;height:115px;border:2px solid #ef4b9b;border-radius:50%;top:31px;background:#ffb6d733}
+.ca{left:28%}.cb{right:28%}.letter{position:absolute;top:75px;font-weight:900;color:#c92d7d}.la{left:38%}.lb{right:38%}
+.reason{background:linear-gradient(135deg,#fff0f8,#ffe0ef);border-top:1px solid #f5c4dc;border-bottom:1px solid #f5c4dc}
+.reason-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.reason-card{background:#fff;border:1px solid #f3c7dd;border-radius:20px;padding:24px}
+.arrow{margin-top:15px;color:#d22f80;font-weight:900;background:#fff0f7;padding:8px 12px;border-radius:999px;display:inline-block;font-size:13px}
+footer{padding:35px 22px;text-align:center;color:#9b5b88;background:#fff0f8;border-top:1px solid #f5c8dd}
+footer strong{color:#d33082}
+@media(max-width:800px){.links{display:none}.hero-inner{grid-template-columns:1fr;padding-top:50px}.hero-art{height:250px}.symbols{font-size:28px}.grid,.reason-grid{grid-template-columns:1fr}h1{letter-spacing:-2px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner">
+<a class="logo" href="#"><span>♥</span> MathBloom</a>
+<div class="links"><a href="#language">Language</a><a href="#expressions">Expressions</a><a href="#sets">Sets</a><a href="#venn">Venn</a><a href="#reasoning">Reasoning</a></div>
+<a class="btn" href="#language">Start Learning →</a>
+</div></nav>
+
+<header class="hero"><div class="hero-inner">
+<div>
+<span class="badge">MATHEMATICS • LOGIC • SETS</span>
+<h1>Explore the beauty of mathematics. ♥</h1>
+<p>From symbols and expressions to sets, Venn diagrams, and logical reasoning — learn the ideas that make mathematics easier to understand.</p>
+<a class="btn" href="#language">Explore Topics →</a>
+</div>
+<div class="hero-art">
+<div class="math-cloud"><div class="symbols">∈ ∪ ∩ ∅<br>∀ ∃ ⇒ ⇔<br>ℕ ℤ ℚ ℝ<br>Σ &nbsp; π</div></div>
+<div class="heart h1">♡</div><div class="heart h2">♥</div>
+</div>
+</div></header>
+
+<section class="section" id="language">
+<div class="section-title"><div class="kicker">01 • Foundations</div><h2>Mathematical Language & Symbols</h2></div>
+<div class="grid">
+<div class="card"><h3>Common Symbols</h3><table><tr><th>Symbol</th><th>Meaning</th></tr><tr><td>∈</td><td>is an element of</td></tr><tr><td>∉</td><td>is not an element of</td></tr><tr><td>⊂</td><td>is a proper subset</td></tr><tr><td>∪</td><td>union</td></tr><tr><td>∩</td><td>intersection</td></tr><tr><td>∅</td><td>empty set</td></tr><tr><td>⇒</td><td>implies</td></tr><tr><td>⇔</td><td>if and only if</td></tr></table></div>
+<div class="card" id="expressions"><h3>Mathematical Expression</h3><p>An expression combines numbers, variables, and operations to represent a mathematical quantity.</p><div class="mathbox"><b>Examples</b><br><br>2 + 3 = 5<br>(x + 1)² = x² + 2x + 1<br>a ÷ b<br>√16 = 4<br>Σᵢ₌₁ⁿ i = n(n + 1)/2</div></div>
+<div class="card" id="sets"><h3>Set</h3><p>A set is a well-defined collection of distinct objects called elements.</p><div class="mathbox"><b>A = {1, 2, 3, 4}</b><br><br>1, 2, 3, and 4 are elements of A.<br><br><code>3 ∈ A</code> &nbsp; <code>7 ∉ A</code></div></div>
+</div></section>
+
+<section class="section" style="padding-top:0">
+<div class="grid">
+<div class="card"><h3>Set-Builder Notation</h3><p>Describe a set by stating the property that every element satisfies.</p><div class="mathbox"><b>A = { x | x is a positive integer less than 5 }</b><br><br>Therefore:<br>A = {1, 2, 3, 4}</div><p style="margin-top:14px">Read the vertical bar as “such that.”</p></div>
+<div class="card"><h3>Different Types of Sets</h3><div class="types">
+<div class="type"><span class="num">1</span><div><b>Empty set</b><br>∅ = { }</div></div>
+<div class="type"><span class="num">2</span><div><b>Finite set</b><br>A = {1,2,3,4}</div></div>
+<div class="type"><span class="num">3</span><div><b>Infinite set</b><br>ℕ = {1,2,3,...}</div></div>
+<div class="type"><span class="num">4</span><div><b>Universal set</b><br>All elements under consideration</div></div>
+<div class="type"><span class="num">5</span><div><b>Equal sets</b><br>A = B when they have the same elements</div></div>
+<div class="type"><span class="num">6</span><div><b>Disjoint sets</b><br>A ∩ B = ∅</div></div>
+</div></div>
+<div class="card" id="venn"><h3>Venn Diagram</h3><p>Venn diagrams use circles to show relationships between sets.</p><div class="venn"><div class="circle ca"></div><div class="circle cb"></div><span class="letter la">A</span><span class="letter lb">B</span></div><p><b>∪</b> union &nbsp; <b>∩</b> intersection &nbsp; <b>A − B</b> difference</p></div>
+</div></section>
+
+<section class="reason" id="reasoning"><div class="section">
+<div class="section-title"><div class="kicker">02 • Thinking Skills</div><h2>Reasoning: Deductive & Inductive</h2></div>
+<div class="reason-grid">
+<div class="reason-card"><h3 style="color:#c52f80">🧠 Deductive Reasoning</h3><p>Starts with general rules or premises and leads to a specific conclusion. If the premises are true and the logic is valid, the conclusion follows necessarily.</p><div class="mathbox">1. All triangles have three angles.<br>2. This shape is a triangle.<br>3. Therefore, this shape has three angles.</div><div class="arrow">GENERAL → SPECIFIC</div></div>
+<div class="reason-card"><h3 style="color:#c52f80">💡 Inductive Reasoning</h3><p>Starts with specific observations and develops a general conclusion. The conclusion is probable rather than guaranteed.</p><div class="mathbox">1. 2 is prime.<br>2. 3 is prime.<br>3. 5 is prime.<br>4. Therefore, odd numbers greater than 1 may be prime — but not always.</div><div class="arrow">SPECIFIC → GENERAL</div></div>
+</div></div></section>
+
+<footer>Think <strong>♥</strong> Explore <strong>♥</strong> Grow<br><small>Mathematics • Logic • Better Thinking</small></footer>
+</body></html>
